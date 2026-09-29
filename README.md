@@ -1,2 +1,34 @@
-# Astrolite
-Astropy but simpler, an dmore understandable
+# AstroLite 🔭
+
+> A simplified, human-friendly alternative to Astropy with zero stressful acronyms.
+
+## Features ✨
+
+* **Plain English Units:** Instant distance conversions and light-travel calculations.
+* **Readable Coordinates:** Work in plain degrees and standard 24-hour clocks without frame headaches.
+* **Core Constants:** Standard SI values ready to import.
+* **Zero Dependencies:** Pure Python standard library.
+
+## Quick Start 🚀
+
+```python
+import astrolite as astro
+
+# 1. Distances & Light Travel
+distance = astro.Distance.from_au(1.0)
+print(distance.kilometers)                  # 149597870.7 km
+print(distance.light_travel_time_seconds()) # ~499.0 s
+
+# 2. Sky Coordinates & Angular Separation
+m31 = astro.SkyTarget("Andromeda Galaxy", right_ascension=10.68, declination=41.27)
+polaris = astro.SkyTarget("Polaris", right_ascension=37.95, declination=89.26)
+
+print(m31)
+# Output: SkyTarget('Andromeda Galaxy', RA: 0h 42m 43.2s, Dec: 41.27°)
+
+separation = m31.angular_distance_to(polaris)
+print(f"Angular separation: {separation:.2f}°")
+
+# 3. Simple Constants
+print(f"Speed of light: {astro.constants.SPEED_OF_LIGHT} m/s")
+print(f"Sun mass: {astro.constants.SUN_MASS} kg")
